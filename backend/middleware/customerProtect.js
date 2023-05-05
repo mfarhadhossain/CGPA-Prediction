@@ -4,10 +4,9 @@ const Customer = require('../models/studentmodel');
 const catchAsync = require('../utils/catchAsync');
 const CustomerService = require('../services/customerServices');
 const AppError = require('../utils/AppError');
-const loanapplication = require('../models/studentprofilemodel');
 
 //const User = db.users;
-const customerService = new CustomerService(Customer, loanapplication);
+const customerService = new CustomerService(Customer);
 
 exports.isAuthorized = catchAsync(async (req, res, next) => {
   const customer = await customerService.getCustomer(req.params.id);
