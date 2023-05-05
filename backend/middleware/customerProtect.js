@@ -4,7 +4,7 @@ const Customer = require('../models/studentmodel');
 const catchAsync = require('../utils/catchAsync');
 const CustomerService = require('../services/customerServices');
 const AppError = require('../utils/AppError');
-const loanapplication = require('../models/loanapplicationmodel');
+const loanapplication = require('../models/studentprofilemodel');
 
 //const User = db.users;
 const customerService = new CustomerService(Customer, loanapplication);

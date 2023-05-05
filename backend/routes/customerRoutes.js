@@ -11,13 +11,13 @@ router.route('/login').post(authController.login);
 router.route('/').get(customers.getAllCustomer);
 router
   .route('/:id')
-  .get(customers.getCustomerByLoanID)
+  .get(customers.getCustomer)
   .put(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.updateCustomer)
   .delete(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.deleteCustomer);
 
-router
-  .route('/loan/:id')
-  .get(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.getLoanStatus)
-  .post(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.applyForLoan)
-  .delete(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.deleteLoanApplication);
+// router
+//   .route('/loan/:id')
+//   .get(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.getLoanStatus)
+//   .post(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.applyForLoan)
+//   .delete(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.deleteLoanApplication);
 module.exports = router;

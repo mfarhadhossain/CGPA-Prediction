@@ -4,7 +4,7 @@ const Employee = require('../models/teachermodel');
 const catchAsync = require('../utils/catchAsync');
 const EmployeeService = require('../services/employeeServices');
 const AppError = require('../utils/AppError');
-const loanapplication = require('../models/loanapplicationmodel');
+const loanapplication = require('../models/studentprofilemodel');
 
 //const User = db.users;
 const employeeService = new EmployeeService(Employee, loanapplication);

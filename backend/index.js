@@ -20,8 +20,8 @@ app.use(
 );
 app.use(express.json());
 db();
-app.use('/api/v1/customers', customers);
-app.use('/api/v1/employees', employees);
+app.use('/api/v1/students', customers);
+app.use('/api/v1/teachers', employees);
 // app.use('/',(req,res)=>{
 //     res.json({message: 'hello from server'});
 // })

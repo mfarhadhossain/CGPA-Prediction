@@ -7,6 +7,22 @@ const students = sequelize.define('students', {
     autoIncrement: true,
     primaryKey: true,
   },
+  roll: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    unique: true,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  registrationNo: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    unique: true,
+    validate: {
+      notEmpty: true,
+    },
+  },
   name: {
     type: Sequelize.STRING,
     allowNull: false,
