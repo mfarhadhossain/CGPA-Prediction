@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-const signUp = (name, email, password) => {
+const signUp = (name, email, designation, password) => {
   console.log(`signup a ashchi`);
   return axios
-    .post('http://127.0.0.1:3005/api/v1/employees/signup', {
+    .post('http://127.0.0.1:3005/api/v1/teachers/signup', {
       name,
       email,
+      designation,
       password,
     })
     .then((response) => {
@@ -22,7 +23,7 @@ const signUp = (name, email, password) => {
 };
 const login = (email, password) => {
   return axios
-    .post('http://127.0.0.1:3005/api/v1/employees/login', {
+    .post('http://127.0.0.1:3005/api/v1/teachers/login', {
       email,
       password,
     })

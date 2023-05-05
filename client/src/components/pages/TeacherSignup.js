@@ -2,13 +2,14 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/signup.jpg';
 import { Context } from '../../contexts/Context';
-import authService from '../../services/authService';
+import authService from '../../services/employeeService';
 import classes from '../../styles/Signup.module.css';
 import Button from '../Button';
 import Checkbox from '../Checkbox';
 import Form from '../Form';
 import Illustration from '../Illustration';
 import TextInput from '../TextInput';
+import { Dropdown } from 'primereact/dropdown';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -16,6 +17,7 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [designation, setDesignation] = useState('');
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState('');
@@ -23,7 +25,6 @@ const Signup = () => {
   const { user, dispatch, isFetching } = useContext(Context);
 
   const navigate = useNavigate();
-
   const handleSignUp = async (e) => {
     e.preventDefault();
     dispatch({ type: 'LOGIN_START' });
@@ -35,7 +36,7 @@ const Signup = () => {
       setError('');
       setLoading(true);
       console.log(`before authService`);
-      const res = await authService.signUp(username, bankAcc, email, password).then(
+      const res = await authService.signUp(username, email, designation, password).then(
         () => {
           navigate('/'); // need to login again
           window.location.reload();
@@ -70,21 +71,19 @@ const Signup = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
           <TextInput
-            required
-            type="text"
-            placeholder="Enter Bank Account No"
-            icon="lock"
-            onChange={(e) => setBankAcc(e.target.value)}
+              required
+              type="text"
+              placeholder="Enter email"
+              icon="alternate_email"
+              onChange={(e) => setEmail(e.target.value)}
           />
-
           <TextInput
-            required
-            type="text"
-            placeholder="Enter email"
-            icon="alternate_email"
-            onChange={(e) => setEmail(e.target.value)}
+              required
+              type="text"
+              placeholder="Enter your designation"
+              icon="person"
+              onChange={(e) => setDesignation(e.target.value)}
           />
-
           <TextInput
             required
             type="password"
