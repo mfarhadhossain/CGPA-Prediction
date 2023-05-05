@@ -1,0 +1,116 @@
+.singleStory {
+  flex: 9;
+}
+
+.singleStoryWrapper {
+  padding: 20px;
+  padding-right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.singleStoryImg {
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.singleStoryTitle {
+  text-align: center;
+  margin: 10px;
+  font-family: "Lora", serif;
+  font-size: 28px;
+}
+
+.singleStoryTitleInput {
+  margin: 10px;
+  font-family: "Lora", serif;
+  font-size: 28px;
+  text-align: center;
+  border: none;
+  color: gray;
+  border-bottom: 1px solid lightgray;
+}
+
+.singleStoryTitleInput:focus {
+  outline: none;
+}
+
+.singleStoryEdit {
+  float: right;
+  font-size: 16px;
+}
+
+.singleStoryIcon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.singleStoryIcon:first-child {
+  color: teal;
+}
+
+.singleStoryIcon:last-child {
+  color: tomato;
+}
+
+.singleStoryInfo {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-family: "Varela Round", sans-serif;
+  color: #b39656;
+}
+
+.singleStoryDesc {
+  color: #666;
+  font-size: 18px;
+  line-height: 25px;
+  white-space: pre-wrap;
+}
+
+.singleStoryDesc::first-letter {
+  margin-left: 20px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.singleStoryDescInput {
+  border: none;
+  color: #666;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.singleStoryDescInput:focus {
+  outline: none;
+}
+.singleStoryButton {
+  width: 100px;
+  border: none;
+  background-color: teal;
+  padding: 5px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 20px;
+}
+
+.buttonRED {
+  background: var(--successGreen);
+  color: rgb(173, 4, 4);
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 0px;
+}
