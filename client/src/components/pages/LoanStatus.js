@@ -8,7 +8,6 @@ import declined_img from '../../assets/images/rejected.jpg';
 import { Context } from '../../contexts/Context';
 import classes from '../../styles/SingleStory.module.css';
 import Illustration from '../Illustration';
-import './../../styles/LoanStatus.module.css';
 
 export default function SingleStory() {
   const location = useLocation();
@@ -58,8 +57,6 @@ export default function SingleStory() {
   }
 
   //}, [path]);
-
-  //console.log('after useeffect');
   return (
     <>
       <div className={classes.singleStory}>

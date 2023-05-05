@@ -1,0 +1,29 @@
+.student-profile {
+    margin: 50px auto;
+    max-width: 800px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.p-field {
+    margin-bottom: 20px;
+}
+
+.p-dropdown {
+    width: 100%;
+}
+
+.p-checkbox {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.p-button {
+    margin-right: 10px;
+}

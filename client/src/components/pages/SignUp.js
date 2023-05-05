@@ -12,10 +12,11 @@ import TextInput from '../TextInput';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
-  const [bankAcc, setBankAcc] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [roll, setRoll] = useState(0);
+  const [registration, setRegistration] = useState(0);
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState('');
@@ -35,7 +36,7 @@ const Signup = () => {
       setError('');
       setLoading(true);
       console.log(`before authService`);
-      const res = await authService.signUp(username, bankAcc, email, password).then(
+      const res = await authService.signUp(username, roll, registration, email, password).then(
         () => {
           navigate('/'); // need to login again
           window.location.reload();
@@ -65,22 +66,29 @@ const Signup = () => {
           <TextInput
             required
             type="text"
-            placeholder="Enter name"
+            placeholder="Enter your name"
             icon="person"
             onChange={(e) => setUsername(e.target.value)}
           />
           <TextInput
-            required
-            type="text"
-            placeholder="Enter Bank Account No"
-            icon="lock"
-            onChange={(e) => setBankAcc(e.target.value)}
+              required
+              type="text"
+              placeholder="Enter your class Roll"
+              icon="person"
+              onChange={(e) => setRoll(e.target.value)}
+          />
+          <TextInput
+              required
+              type="text"
+              placeholder="Enter your registration no"
+              icon="person"
+              onChange={(e) => setRegistration(e.target.value)}
           />
 
           <TextInput
             required
             type="text"
-            placeholder="Enter email"
+            placeholder="Enter your email"
             icon="alternate_email"
             onChange={(e) => setEmail(e.target.value)}
           />
