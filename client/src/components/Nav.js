@@ -10,7 +10,7 @@ export default function Nav() {
         <li>
           <Link to="/" className={classes.brand}>
             <img src={logo} alt="ABC bank logo" />
-            <h3>Institute Of Information Technology</h3>
+            <h3>Student Performance Monitoring System</h3>
           </Link>
         </li>
         <div className={classes.topCenter}>
