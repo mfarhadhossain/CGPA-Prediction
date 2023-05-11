@@ -147,7 +147,7 @@ export default function StudentProfile() {
             <tr>
                 <td className="text-left">Attendance in Class</td>
                 <td className="text-left" colSpan="2">
-                    {student.attendanceInClass}
+                    {student.attendance}
                 </td>
             </tr>
             <tr>
@@ -189,7 +189,7 @@ export default function StudentProfile() {
             <tr>
                 <td className="text-left">Getting Any Scholarship</td>
                 <td className="text-left" colSpan="2">
-                    {student.gettingAnyScholarship}
+                    {student.gettingScholarship}
                 </td>
             </tr>
             <tr>

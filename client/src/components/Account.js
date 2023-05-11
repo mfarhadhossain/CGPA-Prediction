@@ -27,23 +27,23 @@ export default function Account() {
         return (
             <>
                 <div className={classes.accountClickable}>
-          <span title="See all applications" onClick={handleGetLoans}>
-            Applications
-          </span>
+                      <span title="See all applications" onClick={handleGetLoans}>
+                        Applications
+                      </span>
                 </div>
-                <span className="material-icons-outlined" title="Account">
-          account_circle
-        </span>
+                    <span className="material-icons-outlined" title="Account">
+                      account_circle
+                    </span>
                 <div className={classes.accountClickable}>
-          <span title="You're a great employee!">
-            {user.data.user.name}
-              {/* bug */}
-          </span>
+                      <span title="You're a great employee!">
+                        {user.data.user.name}
+                      </span>
                 </div>
-                <span className="material-icons-outlined" title="Logout" onClick={logout}>
-          exit_to_app
-          Logout
-        </span>
+                <div>
+                  <span className="material-icons-outlined" title="Logout" onClick={logout}>
+                    logout
+                  </span>
+                </div>
             </>
         );
     };
@@ -55,24 +55,26 @@ export default function Account() {
                         Edit
                       </span>
                 </div>
-                {/*<span className="material-icons-outlined" title="Account">*/}
-                {/*  account_circle*/}
-                {/*</span>*/}
+                    {/*<span className="material-icons-outlined" title="Account">*/}
+                    {/*  account_circle*/}
+                    {/*</span>*/}
                 <div className={classes.accountClickable}>
                       <span title="Click to see your profile" onClick={showLoanStatus}>
                           Profile
                       </span>
                 </div>
-                        <span className="material-icons-outlined" title="Logout" onClick={logout}>
-                          Logout
-                        </span>
+                    <div>
+                          <span className="material-icons-outlined" title="Logout" onClick={logout}>
+                            logout
+                          </span>
+                    </div>
             </>
         );
     };
     return (
         <div className={classes.account}>
             {user ? (
-                user.data.user.isEmployee ? (
+                user.data.user.isAdmin ? (
                     <>{foundEmployee()}</>
                 ) : (
                     <> {foundCustomer()} </>

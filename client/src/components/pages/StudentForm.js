@@ -46,35 +46,35 @@ export default function StudentForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newPost = {
-            name,
-            roll,
-            regNo,
-            email,
-            department,
-            semester,
-            gender,
-            sscResult,
-            hscResult,
-            fatherEducation,
-            fatherJob,
-            motherEducation,
-            motherJob,
-            majorIllness,
-            attendance,
-            studyHour,
-            internetFacilities,
-            groupStudy,
-            culturalInvolvement,
-            politicalInvolvement,
-            hostelStaying,
-            gettingScholarship,
-            selfIncome,
-            relationalStatus,
-            communicationSkill,
-            confidence,
-            previousSemesterResult
-        };
+        const newPost = {};
+        if (department) newPost.department = department;
+        if (semester) newPost.semester = semester;
+        if (gender) newPost.gender = gender;
+        if (sscResult) newPost.sscResult = sscResult;
+        if (hscResult) newPost.hscResult = hscResult;
+        if (fatherEducation) newPost.fatherEducation = fatherEducation;
+        if (fatherJob) newPost.fatherJob = fatherJob;
+        if (motherEducation) newPost.motherEducation = motherEducation;
+        if (motherJob) newPost.motherJob = motherJob;
+        if (majorIllness) newPost.majorIllness = majorIllness;
+        if (attendance) newPost.attendance = attendance;
+        if (studyHour) newPost.studyHour = studyHour;
+        if (internetFacilities) newPost.internetFacilities = internetFacilities;
+        if (groupStudy) newPost.groupStudy = groupStudy;
+        if (culturalInvolvement) newPost.culturalInvolvement = culturalInvolvement;
+        if (politicalInvolvement) newPost.politicalInvolvement = politicalInvolvement;
+        if (hostelStaying) newPost.hostelStaying = hostelStaying;
+        if (gettingScholarship) newPost.gettingScholarship = gettingScholarship;
+        if (selfIncome) newPost.selfIncome = selfIncome;
+        if (relationalStatus) newPost.relationalStatus = relationalStatus;
+        if (communicationSkill) newPost.communicationSkill = communicationSkill;
+        if (confidence) newPost.confidence = confidence;
+        if (previousSemesterResult) newPost.previousSemesterResult = previousSemesterResult;
+
+        if (Object.keys(newPost).length === 0) {
+            // No fields are filled, return without updating
+            return;
+        }
         const token = user.data.token;
         try {
             setError('');
@@ -85,14 +85,15 @@ export default function StudentForm() {
                 },
             });
 
-            const res = await instance.put(
+            const res = await instance.patch(
                 'http://127.0.0.1:3005/api/v1/students/' + user.data.user.id,
                 newPost
             );
             navigate('/students/' + user.data.user.id);
             window.location.reload();
         } catch (err) {
-            setError('You cannot apply more than once!');
+            setError('Something went wrong!');
+            console.log(err);
         }
     };
     return <div className="grid">
@@ -102,22 +103,22 @@ export default function StudentForm() {
                 <h4 className="card-head">{'Student Information'}</h4>
                 <form onSubmit={handleSubmit}>
                     <div className="p-fluid formgrid grid">
-                        <div className="field col-12 md:col-6">
-                            <label htmlFor="name">Name</label>
-                            <InputText id="name" value={name} onChange={(e) => setName(e.target.value)}/>
-                        </div>
-                        <div className="field col-12 md:col-6">
-                            <label htmlFor="roll">Roll</label>
-                            <InputText id="roll" value={roll} onChange={(e) => setRoll(e.target.value)}/>
-                        </div>
-                        <div className="field col-12 md:col-6">
-                            <label htmlFor="regNo">Registration No</label>
-                            <InputText id="regNo" value={regNo} onChange={(e) => setRegNo(e.target.value)}/>
-                        </div>
-                        <div className="field col-12 md:col-6">
-                            <label htmlFor="email">Email</label>
-                            <InputText id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                        </div>
+                        {/*<div className="field col-12 md:col-6">*/}
+                        {/*    <label htmlFor="name">Name</label>*/}
+                        {/*    <InputText id="name" value={name} onChange={(e) => setName(e.target.value)}/>*/}
+                        {/*</div>*/}
+                        {/*<div className="field col-12 md:col-6">*/}
+                        {/*    <label htmlFor="roll">Roll</label>*/}
+                        {/*    <InputText id="roll" value={roll} onChange={(e) => setRoll(e.target.value)}/>*/}
+                        {/*</div>*/}
+                        {/*<div className="field col-12 md:col-6">*/}
+                        {/*    <label htmlFor="regNo">Registration No</label>*/}
+                        {/*    <InputText id="regNo" value={regNo} onChange={(e) => setRegNo(e.target.value)}/>*/}
+                        {/*</div>*/}
+                        {/*<div className="field col-12 md:col-6">*/}
+                        {/*    <label htmlFor="email">Email</label>*/}
+                        {/*    <InputText id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>*/}
+                        {/*</div>*/}
                         <div className="field col-12 md:col-6">
                             <label htmlFor="department">Department</label>
                             <InputText id="department" value={department}
@@ -156,11 +157,6 @@ export default function StudentForm() {
                             <label htmlFor="motherducation">Mother's Education</label>
                             <InputText id="mothereducation" value={motherEducation}
                                        onChange={(e) => setMotherEducation(e.target.value)}/>
-                        </div>
-                        <div className="field col-12 md:col-6">
-                            <label htmlFor="motherjob">Mother's Job</label>
-                            <InputText id="motherjob" value={motherJob}
-                                       onChange={(e) => setMotherJob(e.target.value)}/>
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="motherjob">Mother's Job</label>

@@ -12,7 +12,7 @@ router.route('/').get(customers.getAllCustomer);
 router
   .route('/:id')
   .get(customers.getCustomer)
-  .put(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.updateCustomer)
+  .patch(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.updateCustomer)
   .delete(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.deleteCustomer);
 
 // router

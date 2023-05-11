@@ -10,7 +10,7 @@ import NotFound from './pages/NotFound';
 import Signup from './pages/SignUp';
 import TeacherSignup from "./pages/TeacherSignup";
 
-
+import '../styles/App.css'
 import 'primereact/resources/primereact.css';
 import 'primeicons/primeicons.css';
 import StudentProfile from "./pages/StudentProfile";

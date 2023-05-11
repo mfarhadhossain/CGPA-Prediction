@@ -13,25 +13,25 @@ export default function Nav() {
             <h3>Student Performance Monitoring System</h3>
           </Link>
         </li>
-        <div className={classes.topCenter}>
-          <ul className={classes.topList}>
-            {/* <li className={classes.topListItem}>
-              <Link className="link" to="/">
-                HOME
-              </Link>
-            </li>
-            <li className={classes.topListItem}>
-              <Link className="link" to="/">
-                ABOUT
-              </Link>
-            </li>
-            <li className={classes.topListItem}>
-              <Link className="link" to="/">
-                CONTACT
-              </Link>
-            </li> */}
-          </ul>
-        </div>
+        {/*<div className={classes.topCenter}>*/}
+        {/*  <ul className={classes.topList}>*/}
+        {/*    /!* <li className={classes.topListItem}>*/}
+        {/*      <Link className="link" to="/">*/}
+        {/*        HOME*/}
+        {/*      </Link>*/}
+        {/*    </li>*/}
+        {/*    <li className={classes.topListItem}>*/}
+        {/*      <Link className="link" to="/">*/}
+        {/*        ABOUT*/}
+        {/*      </Link>*/}
+        {/*    </li>*/}
+        {/*    <li className={classes.topListItem}>*/}
+        {/*      <Link className="link" to="/">*/}
+        {/*        CONTACT*/}
+        {/*      </Link>*/}
+        {/*    </li> *!/*/}
+        {/*  </ul>*/}
+        {/*</div>*/}
       </ul>
       <Account />
     </nav>
