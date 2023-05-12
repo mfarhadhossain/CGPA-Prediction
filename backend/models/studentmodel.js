@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
 const sequelize = require('./dbconnect');
+const Courses = require('./coursesmodel');
 
-const students = sequelize.define('students', {
+const Student = sequelize.define('students', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -76,5 +77,5 @@ const students = sequelize.define('students', {
   confidence: { type: Sequelize.STRING, defaultValue: 'N/A' },
   previousSemesterResult: { type: Sequelize.FLOAT, defaultValue: 0 },
 });
-
-module.exports = students;
+Student.hasMany(Courses, { foreignKey: 'studentId' });
+module.exports = Student;

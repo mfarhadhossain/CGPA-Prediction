@@ -30,4 +30,30 @@ exports.deleteCustomer = catchAsync(async (req, res, next) => {
   }
   contentNegotiate.sendResponse(req, res, 204, {}, 'User is Deleted!');
 });
+exports.getCourse = catchAsync(async (req, res, next) => {
+  const courseData = await customerService.getCourse(req.params.id);
+  if (!courseData) {
+    return next(new AppError('No course was found with that ID', 404));
+  }
+  contentNegotiate.sendResponse(req, res, 200, courseData, 'Course Fetched Successfully!');
+});
+
+exports.getAllCourse = catchAsync(async (req, res, next) => {
+  const coursesData = await customerService.getAllCourse();
+  contentNegotiate.sendResponse(req, res, 200, coursesData, 'Courses Fetched Successfully!');
+});
+
+exports.updateCourse = catchAsync(async (req, res, next) => {
+  const courseData = await customerService.updateCourse(req.params.id, req.body);
+  if (!courseData[0]) {
+    return next(new AppError('No course was found with that ID', 404));
+  }
+  contentNegotiate.sendResponse(req, res, 200, {}, 'Course is Updated!');
+});
+
+exports.postCourse = catchAsync(async (req, res, next) => {
+  const courseId = parseInt(req.params.id);
+  const courseData = await customerService.postCourse(courseId, req.body);
+  contentNegotiate.sendResponse(req, res, 201, courseData, 'Course Created Successfully!');
+});
 exports.customerService = customerService;

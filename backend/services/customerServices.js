@@ -1,9 +1,9 @@
 const bcrypt = require('bcrypt');
 
 class customerServices {
-  constructor(table, studentprofile) {
+  constructor(table, courses) {
     this.customerTable = table;
-    this.studentprofileTable = studentprofile;
+    this.coursesTable = courses;
   }
   createCustomer = async (studentBody) => {
     const password = await bcrypt.hash(studentBody.password, 10);
@@ -45,6 +45,35 @@ class customerServices {
       where: { email },
     });
     return customerData;
+  };
+  // Courses
+  getCourse = async (id) => {
+    const courseData = await this.coursesTable.findOne({
+      where: { id },
+    });
+    return courseData;
+  };
+
+  getAllCourse = async () => {
+    const courseData = await this.coursesTable.findAll();
+    return courseData;
+  };
+
+  updateCourse = async (id, courseBody) => {
+    const courseData = await this.coursesTable.update(courseBody, {
+      where: { id },
+    });
+    return courseData;
+  };
+
+  postCourse = async (id, courseBody) => {
+    const newCourse = {
+      ...courseBody,
+      studentId: id,
+    };
+
+    const courseData = await this.coursesTable.create(newCourse);
+    return courseData;
   };
 }
 module.exports = customerServices;

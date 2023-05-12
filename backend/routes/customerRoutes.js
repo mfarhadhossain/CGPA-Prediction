@@ -8,16 +8,16 @@ const router = express.Router();
 router.route('/signup').post(authController.signup);
 router.route('/login').post(authController.login);
 
+router.route('/:id/courses').get(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.getAllCourse);
 router.route('/').get(customers.getAllCustomer);
 router
   .route('/:id')
   .get(customers.getCustomer)
   .patch(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.updateCustomer)
   .delete(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.deleteCustomer);
-
-// router
-//   .route('/loan/:id')
-//   .get(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.getLoanStatus)
-//   .post(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.applyForLoan)
-//   .delete(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.deleteLoanApplication);
+router
+  .route('/course/:id')
+  .get(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.getCourse)
+  .post(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.postCourse)
+  .patch(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.updateCourse);
 module.exports = router;
