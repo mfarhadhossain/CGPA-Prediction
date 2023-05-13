@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const calculateScore = require('../utils/calculateScore');
 
 class customerServices {
   constructor(table, courses) {
@@ -74,6 +75,64 @@ class customerServices {
 
     const courseData = await this.coursesTable.create(newCourse);
     return courseData;
+  };
+  // predict cgpa
+  predictCGPA = async (id) => {
+    const customerData = await this.customerTable.findOne({
+      where: { id },
+    });
+    //console.log(`searching for customer with id ${id}`);
+    //console.log(customerData);
+    if (customerData) {
+      // first score using weights
+
+      const {
+        currentLoanAmount,
+        creditScore,
+        annualIncome,
+        yearsInCurrentJob,
+        monthlyDebt,
+        yearsofCreditHistory,
+        lastDelinquent,
+        openAccounts,
+        creditProblems,
+        creditBalance,
+        maxOpenCredit,
+        bankruptcies,
+        term,
+        homeOwnership,
+        purpose,
+      } = customerData;
+      const weights = [
+        currentLoanAmount,
+        term,
+        creditScore,
+        annualIncome,
+        yearsInCurrentJob,
+        homeOwnership,
+        purpose,
+        monthlyDebt,
+        yearsofCreditHistory,
+        lastDelinquent,
+        openAccounts,
+        creditProblems,
+        creditBalance,
+        maxOpenCredit,
+        bankruptcies,
+      ];
+      const sc = await calculateScore.calculate(weights);
+      customerData.score = sc;
+      await customerData.save();
+      //console.log(`calculated score: ${sc}`);
+      // // update score column
+      // const customerData2 = await this.loanTable.update(customerData, {
+      //   where: { score: sc },
+      // });
+      return customerData;
+    } else {
+      // return error couldn't find error
+      return null;
+    }
   };
 }
 module.exports = customerServices;

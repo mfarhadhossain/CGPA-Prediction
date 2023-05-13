@@ -9,7 +9,8 @@
   font-size: 14px;
 }
 .accountClickable {
-    width: 2%;
+    min-width: 2%;
+    max-width: 15%;
     display: flex;
     gap: 0.2rem;
     justify-content: flex-end;

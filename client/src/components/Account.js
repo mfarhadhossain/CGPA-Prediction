@@ -52,7 +52,7 @@ export default function Account() {
             <>
                 <div className={classes.accountClickable}>
                       <span title="Edit your information" onClick={handlePostLoan}>
-                        Edit
+                        Predict Your CGPA
                       </span>
                 </div>
                     {/*<span className="material-icons-outlined" title="Account">*/}

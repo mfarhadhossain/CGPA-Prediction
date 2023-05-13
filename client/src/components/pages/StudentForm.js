@@ -4,7 +4,8 @@ import {useNavigate} from 'react-router-dom';
 import React, {useContext, useState} from 'react';
 import {Context} from '../../contexts/Context';
 import {InputText} from "primereact/inputtext";
-import {Button} from "primereact/button";
+import Button from "../Button";
+import {Dropdown} from "primereact/dropdown";
 
 export default function StudentForm() {
 
@@ -37,7 +38,44 @@ export default function StudentForm() {
     const [previousSemesterResult, setPreviousSemesterResult] = useState("");
 
     // options
-
+    const departmentOptions = [
+        'Accounting',
+        'Anthropology',
+        'Archaeology',
+        'BICLC',
+        'Bangla',
+        'Biochemistry and Molecular Biology',
+        'Biotechnology and Genetic Engineering',
+        'Botany',
+        'CSE',
+        'Chemistry',
+        'Drama & Dramatics',
+        'Economics',
+        'English',
+        'Environmental Science',
+        'Finance & Banking',
+        'Fine Arts',
+        'Geography & Environment',
+        'Government & Politics',
+        'History',
+        'IIT',
+        'Institute of Business Administration',
+        'International Relations',
+        'JMS',
+        'Law & Justice',
+        'Management',
+        'Marketing',
+        'Master of Business Administration',
+        'Mathematics',
+        'Microbiology',
+        'PHI',
+        'Pharmacy',
+        'Philosophy',
+        'Physics',
+        'Public Administration',
+        'Statistics',
+        'Zoology'
+    ];
     const [error, setError] = useState('');
 
     const {user} = useContext(Context);
@@ -123,6 +161,13 @@ export default function StudentForm() {
                             <label htmlFor="department">Department</label>
                             <InputText id="department" value={department}
                                        onChange={(e) => setDepartment(e.target.value)}/>
+                            {/*<Dropdown*/}
+                            {/*    id="department"*/}
+                            {/*    options={departmentOptions}*/}
+                            {/*    value={department}*/}
+                            {/*    onChange={(e) => setDepartment(e.value)}*/}
+                            {/*    placeholder="Select a department"*/}
+                            {/*/>*/}
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="semester">Semester</label>
@@ -234,7 +279,7 @@ export default function StudentForm() {
                                        onChange={(e) => setPreviousSemesterResult(e.target.value)}/>
                         </div>
                         <div className="flex flex-row-reverse">
-                            <Button label={'Submit'}></Button>
+                            <Button type="submit">Predict!</Button>
                         </div>
                     </div>
                 </form>

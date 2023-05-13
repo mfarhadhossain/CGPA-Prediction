@@ -2,7 +2,7 @@ const tf = require('@tensorflow/tfjs');
 exports.go = async (weights) => {
   console.log(`printing weights: ` + weights);
   const mymodel = await tf.loadLayersModel(
-    'https://raw.githubusercontent.com/Frdhsn/test-ml-model-load/main/model/model.json'
+    'https://raw.githubusercontent.com/Frdhsn/cgpa-prediction-model-load/main/modelanntfjsv3/model.json'
   );
   mymodel.summary();
 
