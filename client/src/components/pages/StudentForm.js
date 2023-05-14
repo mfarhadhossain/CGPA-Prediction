@@ -141,33 +141,10 @@ export default function StudentForm() {
                 <h4 className="card-head">{'Student Information'}</h4>
                 <form onSubmit={handleSubmit}>
                     <div className="p-fluid formgrid grid">
-                        {/*<div className="field col-12 md:col-6">*/}
-                        {/*    <label htmlFor="name">Name</label>*/}
-                        {/*    <InputText id="name" value={name} onChange={(e) => setName(e.target.value)}/>*/}
-                        {/*</div>*/}
-                        {/*<div className="field col-12 md:col-6">*/}
-                        {/*    <label htmlFor="roll">Roll</label>*/}
-                        {/*    <InputText id="roll" value={roll} onChange={(e) => setRoll(e.target.value)}/>*/}
-                        {/*</div>*/}
-                        {/*<div className="field col-12 md:col-6">*/}
-                        {/*    <label htmlFor="regNo">Registration No</label>*/}
-                        {/*    <InputText id="regNo" value={regNo} onChange={(e) => setRegNo(e.target.value)}/>*/}
-                        {/*</div>*/}
-                        {/*<div className="field col-12 md:col-6">*/}
-                        {/*    <label htmlFor="email">Email</label>*/}
-                        {/*    <InputText id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>*/}
-                        {/*</div>*/}
                         <div className="field col-12 md:col-6">
                             <label htmlFor="department">Department</label>
                             <InputText id="department" value={department}
                                        onChange={(e) => setDepartment(e.target.value)}/>
-                            {/*<Dropdown*/}
-                            {/*    id="department"*/}
-                            {/*    options={departmentOptions}*/}
-                            {/*    value={department}*/}
-                            {/*    onChange={(e) => setDepartment(e.value)}*/}
-                            {/*    placeholder="Select a department"*/}
-                            {/*/>*/}
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="semester">Semester</label>
