@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('./dbconnect');
-const Courses = require('./coursesmodel');
+// const Courses = require('./coursesmodel');
 
 const Student = sequelize.define('students', {
   id: {
@@ -75,7 +75,7 @@ const Student = sequelize.define('students', {
   relationalStatus: { type: Sequelize.STRING, defaultValue: 'N/A' },
   communicationSkill: { type: Sequelize.STRING, defaultValue: 'N/A' },
   confidence: { type: Sequelize.STRING, defaultValue: 'N/A' },
-  previousSemesterResult: { type: Sequelize.FLOAT, defaultValue: 0 },
+  predictedSemesterResult: { type: Sequelize.FLOAT, defaultValue: 0 },
 });
-Student.hasMany(Courses, { foreignKey: 'studentId' });
+// Student.hasMany(Courses, { foreignKey: 'studentId' });
 module.exports = Student;

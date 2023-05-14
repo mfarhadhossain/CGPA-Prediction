@@ -273,11 +273,6 @@ export default function StudentForm() {
                             <InputText id="confidence" value={confidence}
                                        onChange={(e) => setConfidence(e.target.value)}/>
                         </div>
-                        <div className="field col-12 md:col-6">
-                            <label htmlFor="previousSemesterResult">Previous Semester Result</label>
-                            <InputText id="previousSemesterResult" value={previousSemesterResult}
-                                       onChange={(e) => setPreviousSemesterResult(e.target.value)}/>
-                        </div>
                         <div className="flex flex-row-reverse">
                             <Button type="submit">Predict!</Button>
                         </div>

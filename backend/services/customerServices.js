@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const calculateScore = require('../utils/calculateScore');
+const { preprocess } = require('../utils/preprocessingInput');
 
 class customerServices {
   constructor(table, courses) {
@@ -77,62 +78,70 @@ class customerServices {
     return courseData;
   };
   // predict cgpa
-  predictCGPA = async (id) => {
+  predictCGPA = async (id, customerBody) => {
+    console.log(customerBody);
+    await this.customerTable.update(customerBody, {
+      where: { id },
+    });
     const customerData = await this.customerTable.findOne({
       where: { id },
     });
-    //console.log(`searching for customer with id ${id}`);
-    //console.log(customerData);
-    if (customerData) {
-      // first score using weights
-
-      const {
-        currentLoanAmount,
-        creditScore,
-        annualIncome,
-        yearsInCurrentJob,
-        monthlyDebt,
-        yearsofCreditHistory,
-        lastDelinquent,
-        openAccounts,
-        creditProblems,
-        creditBalance,
-        maxOpenCredit,
-        bankruptcies,
-        term,
-        homeOwnership,
-        purpose,
-      } = customerData;
-      const weights = [
-        currentLoanAmount,
-        term,
-        creditScore,
-        annualIncome,
-        yearsInCurrentJob,
-        homeOwnership,
-        purpose,
-        monthlyDebt,
-        yearsofCreditHistory,
-        lastDelinquent,
-        openAccounts,
-        creditProblems,
-        creditBalance,
-        maxOpenCredit,
-        bankruptcies,
-      ];
-      const sc = await calculateScore.calculate(weights);
-      customerData.score = sc;
-      await customerData.save();
-      //console.log(`calculated score: ${sc}`);
-      // // update score column
-      // const customerData2 = await this.loanTable.update(customerData, {
-      //   where: { score: sc },
-      // });
-      return customerData;
-    } else {
-      // return error couldn't find error
-      return null;
-    }
+    console.log(customerData);
+    const {
+      department,
+      semester,
+      gender,
+      sscResult,
+      hscResult,
+      fatherEducation,
+      fatherJob,
+      motherEducation,
+      motherJob,
+      majorIllness,
+      attendance,
+      studyHour,
+      internetFacilities,
+      groupStudy,
+      culturalInvolvement,
+      politicalInvolvement,
+      hostelStaying,
+      gettingScholarship,
+      selfIncome,
+      relationalStatus,
+      communicationSkill,
+      confidence,
+    } = customerData;
+    const weights = [
+      department,
+      semester,
+      gender,
+      sscResult,
+      hscResult,
+      fatherEducation,
+      fatherJob,
+      motherEducation,
+      motherJob,
+      majorIllness,
+      attendance,
+      studyHour,
+      internetFacilities,
+      groupStudy,
+      culturalInvolvement,
+      politicalInvolvement,
+      hostelStaying,
+      gettingScholarship,
+      selfIncome,
+      relationalStatus,
+      communicationSkill,
+      confidence,
+    ];
+    // console.log('before processing: ' + weights);
+    const processedWeights = preprocess(weights);
+    // console.log('before processing: ' + processedWeights);
+    const sc = await calculateScore.calculate(processedWeights);
+    customerData.predictedSemesterResult = sc;
+    await customerData.save();
+    return customerData;
   };
 }
 module.exports = customerServices;

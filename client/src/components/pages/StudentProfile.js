@@ -217,9 +217,9 @@ export default function StudentProfile() {
                 </td>
             </tr>
             <tr>
-                <td className="text-left">Previous Semester Result</td>
+                <td className="text-left">Predicted Semester Result</td>
                 <td className="text-left" colSpan="2">
-                    {student.previousSemesterResult}
+                    {student.predictedSemesterResult}
                 </td>
             </tr>
             </tbody>
@@ -231,6 +231,8 @@ export default function StudentProfile() {
         <div className="p-grid">
             <div className="p-col-12">
                 <div className="card">
+                    <h1>
+                        { (student.predictedSemesterResult > 0) ? `Your Predicted CGPA is ${student.predictedSemesterResult}!`: ''}</h1>
                     <h1>Student Profile</h1>
                     {loading ? renderLoader() : renderDataTable()}
                 </div>

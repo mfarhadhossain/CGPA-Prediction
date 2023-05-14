@@ -13,7 +13,7 @@ router.route('/').get(customers.getAllCustomer);
 router
   .route('/:id')
   .get(customers.getCustomer)
-  .patch(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.updateCustomer)
+  .patch(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.predictScore)
   .delete(customerMiddleware.Protect, customerMiddleware.isAuthorized, customers.deleteCustomer);
 router
   .route('/course/:id')
