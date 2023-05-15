@@ -6,6 +6,8 @@ import {Context} from '../../contexts/Context';
 import {InputText} from "primereact/inputtext";
 import Button from "../Button";
 import {Dropdown} from "primereact/dropdown";
+import 'primereact/resources/primereact.min.css';
+import 'primereact/resources/themes/saga-blue/theme.css';
 
 export default function StudentForm() {
 
@@ -76,6 +78,101 @@ export default function StudentForm() {
         'Statistics',
         'Zoology'
     ];
+    const genderOptions = [
+        'Female',
+        'Male',
+        'Non-binary'
+    ];
+    const fatherJobOptions = [
+        'Business',
+        'Govt. Job',
+        'Private Job',
+        'Self-employed',
+        'Unemployed',
+    ];
+    const motherJobOptions = [
+        'Business',
+        'Govt. Job',
+        'Private Job',
+        'Unemployed',
+    ]
+    const majorIllnessOptions = [
+        'No',
+        'Yes',
+    ]
+
+    const attendanceOptions = [
+        '60-75%',
+        '75-100%',
+        'less than 60%',
+    ];
+
+    const studyHourOptions = [
+        '10-14 hour',
+        '3-9 hour',
+        'less than 3 hour',
+        'more than 14 hour',
+    ];
+
+    const internetFacilitiesOptions = [
+        'Available',
+        'Available but not sufficient',
+        'Not Available',
+    ];
+
+    const groupStudyOptions = [
+        'Not participate',
+        'Participate',
+    ]
+
+    const sportCulturalInvolvementOptions = [
+        'No',
+        'Yes',
+    ];
+
+    const politicalInvolvementOptions = [
+        'No',
+        'Yes',
+    ]
+
+    const hostelStayingOptions = [
+        'Irregular',
+        'No',
+        'Regular',
+    ];
+
+    const gettingScholarshipOptions = [
+        'No',
+        'Yes',
+    ];
+
+    const selfIncomeOptions = [
+        '3000-5000',
+        '6000-10000',
+        'Less than 3000',
+        'More than 10000',
+        'None',
+    ]
+    const relationalStatusOptions = [
+        'In a relationship',
+        'Married',
+        'Single',
+    ]
+
+    const communicationSkillOptions = [
+        'Average',
+        'Good',
+        'Not Good',
+    ]
+
+    const confidenceOptions = [
+        'Confident about curricular activity',
+        'Confident about decision making',
+        'Confident about public speaking',
+        'Confident about study',
+        'Not enough confident in any activity',
+        'pretty much confident',
+    ];
     const [error, setError] = useState('');
 
     const {user} = useContext(Context);
@@ -143,112 +240,239 @@ export default function StudentForm() {
                     <div className="p-fluid formgrid grid">
                         <div className="field col-12 md:col-6">
                             <label htmlFor="department">Department</label>
-                            <InputText id="department" value={department}
-                                       onChange={(e) => setDepartment(e.target.value)}/>
+                            {/*<InputText id="department" value={department}*/}
+                            {/*           onChange={(e) => setDepartment(e.target.value)}/>*/}
+                            <Dropdown
+                                id="department"
+                                options={departmentOptions}
+                                value={department}
+                                onChange={(e) => setDepartment(e.target.value)}
+                                placeholder={department? department: 'Select a department'}
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="semester">Semester</label>
                             <InputText id="semester" value={semester}
-                                       onChange={(e) => setSemester(e.target.value)}/>
+                                       onChange={(e) => setSemester(e.target.value)}
+                                       placeholder="Enter 1-10 for Undergraduate, 11-13 for postgradute"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="gender">Gender</label>
-                            <InputText id="gender" value={gender} onChange={(e) => setGender(e.target.value)}/>
+                            {/*<InputText id="gender" value={gender} onChange={(e) => setGender(e.target.value)}/>*/}
+                            <Dropdown
+                                id="gender"
+                                options={genderOptions}
+                                value={gender}
+                                onChange={(e) => setGender(e.target.value)}
+                                placeholder="Select your gender"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="sscresult">SSC Result (GPA)</label>
                             <InputText id="sscresult" value={sscResult}
-                                       onChange={(e) => setSscResult(e.target.value)}/>
+                                       onChange={(e) => setSscResult(e.target.value)}
+                                       placeholder="Example: 4.88"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="hscresult">HSC Result (GPA)</label>
                             <InputText id="hscresult" value={hscResult}
-                                       onChange={(e) => setHscResult(e.target.value)}/>
+                                       onChange={(e) => setHscResult(e.target.value)}
+                                       placeholder="Example: 5.00"/>
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="fathereducation">Father's Education</label>
                             <InputText id="fathereducation" value={fatherEducation}
-                                       onChange={(e) => setFatherEducation(e.target.value)}/>
+                                       onChange={(e) => setFatherEducation(e.target.value)}
+                                        placeholder={"Enter a number. Example: 12 Being graduated from college/HSC"}
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="fatherjob">Father's Job</label>
-                            <InputText id="fatherjob" value={fatherJob}
-                                       onChange={(e) => setFatherJob(e.target.value)}/>
+                            {/*<InputText id="fatherjob" value={fatherJob}*/}
+                            {/*           onChange={(e) => setFatherJob(e.target.value)}/>*/}
+                            <Dropdown
+                                id="fatherjob"
+                                options={fatherJobOptions}
+                                value={fatherJob}
+                                onChange={(e) => setFatherJob(e.target.value)}
+                                placeholder="Select a job"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="motherducation">Mother's Education</label>
                             <InputText id="mothereducation" value={motherEducation}
-                                       onChange={(e) => setMotherEducation(e.target.value)}/>
+                                       onChange={(e) => setMotherEducation(e.target.value)}
+                                       placeholder={"Enter a number. Example: 12 Being graduated from college/HSC"}
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="motherjob">Mother's Job</label>
-                            <InputText id="motherjob" value={motherJob}
-                                       onChange={(e) => setMotherJob(e.target.value)}/>
+                            <Dropdown
+                                id="motherjob"
+                                options={motherJobOptions}
+                                value={motherJob}
+                                onChange={(e) => setMotherJob(e.target.value)}
+                                placeholder="Select a job"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="majorIllness">Major Illness</label>
-                            <InputText id="majorIllness" value={majorIllness}
-                                       onChange={(e) => setMajorIllness(e.target.value)}/>
+                            {/*<InputText id="majorIllness" value={majorIllness}*/}
+                            {/*           onChange={(e) => setMajorIllness(e.target.value)}/>*/}
+                            <Dropdown
+                                id="majorIllness"
+                                options={majorIllnessOptions}
+                                value={majorIllness}
+                                onChange={(e) => setMajorIllness(e.target.value)}
+                                placeholder="Select an option"
+                            />
+
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="attendance">Attendance</label>
-                            <InputText id="attendance" value={attendance}
-                                       onChange={(e) => setAttendance(e.target.value)}/>
+                            {/*<InputText id="attendance" value={attendance}*/}
+                            {/*           onChange={(e) => setAttendance(e.target.value)}/>*/}
+                            <Dropdown
+                                id="attendance"
+                                options={attendanceOptions}
+                                value={attendance}
+                                onChange={(e) => setAttendance(e.target.value)}
+                                placeholder="Select an option"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="studyhour">Study Hour</label>
-                            <InputText id="studyhour" value={studyHour}
-                                       onChange={(e) => setStudyHour(e.target.value)}/>
+                            {/*<InputText id="studyhour" value={studyHour}*/}
+                            {/*           onChange={(e) => setStudyHour(e.target.value)}/>*/}
+                            <Dropdown
+                                id="studyhour"
+                                options={studyHourOptions}
+                                value={studyHour}
+                                onChange={(e) => setStudyHour(e.target.value)}
+                                placeholder="Select an option"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="internetFacilities">Internet Facilities</label>
-                            <InputText id="internetFacilities" value={internetFacilities}
-                                       onChange={(e) => setInternetFacilities(e.target.value)}/>
+                            {/*<InputText id="internetFacilities" value={internetFacilities}*/}
+                            {/*           onChange={(e) => setInternetFacilities(e.target.value)}/>*/}
+                            <Dropdown
+                                id="internetFacilities"
+                                options={internetFacilitiesOptions}
+                                value={internetFacilities}
+                                onChange={(e) => setInternetFacilities(e.target.value)}
+                                placeholder="Select an option"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="groupStudy">Group Study</label>
-                            <InputText id="groupStudy" value={groupStudy}
-                                       onChange={(e) => setGroupStudy(e.target.value)}/>
+                            {/*<InputText id="groupStudy" value={groupStudy}*/}
+                            {/*           onChange={(e) => setGroupStudy(e.target.value)}/>*/}
+                            <Dropdown
+                                id="groupStudy"
+                                options={groupStudyOptions}
+                                value={groupStudy}
+                                onChange={(e) => setGroupStudy(e.target.value)}
+                                placeholder="Select an option"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="culturalInvolvement">Sports/Cultural Involvement</label>
-                            <InputText id="culturalInvolvement" value={culturalInvolvement}
-                                       onChange={(e) => setCulturalInvolvement(e.target.value)}/>
+                            {/*<InputText id="culturalInvolvement" value={culturalInvolvement}*/}
+                            {/*           onChange={(e) => setCulturalInvolvement(e.target.value)}/>*/}
+                            <Dropdown
+                                id="culturalInvolvement"
+                                options={sportCulturalInvolvementOptions}
+                                value={culturalInvolvement}
+                                onChange={(e) => setCulturalInvolvement(e.target.value)}
+                                placeholder="Select an option"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="politicalInvolvement">Political Involvement</label>
-                            <InputText id="politicalInvolvement" value={politicalInvolvement}
-                                       onChange={(e) => setPoliticalInvolvement(e.target.value)}/>
+                            {/*<InputText id="politicalInvolvement" value={politicalInvolvement}*/}
+                            {/*           onChange={(e) => setPoliticalInvolvement(e.target.value)}/>*/}
+                            <Dropdown
+                                id="politicalInvolvement"
+                                options={politicalInvolvementOptions}
+                                value={politicalInvolvement}
+                                onChange={(e) => setPoliticalInvolvement(e.target.value)}
+                                placeholder="Select an option"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="hostelStaying">Hostel Staying</label>
-                            <InputText id="hostelStaying" value={hostelStaying}
-                                       onChange={(e) => setHostelStaying(e.target.value)}/>
+                            {/*<InputText id="hostelStaying" value={hostelStaying}*/}
+                            {/*           onChange={(e) => setHostelStaying(e.target.value)}/>*/}
+                            <Dropdown
+                                id="hostelStaying"
+                                options={hostelStayingOptions}
+                                value={hostelStaying}
+                                onChange={(e) => setHostelStaying(e.target.value)}
+                                placeholder="Select an option"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="gettingScholarship">Scholarship</label>
-                            <InputText id="gettingScholarship" value={gettingScholarship}
-                                       onChange={(e) => setGettingScholarship(e.target.value)}/>
+                            {/*<InputText id="gettingScholarship" value={gettingScholarship}*/}
+                            {/*           onChange={(e) => setGettingScholarship(e.target.value)}/>*/}
+                            <Dropdown
+                                id="gettingScholarship"
+                                options={gettingScholarshipOptions}
+                                value={gettingScholarship}
+                                onChange={(e) => setGettingScholarship(e.target.value)}
+                                placeholder="Select an option"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="selfIncome">Self Income</label>
-                            <InputText id="selfIncome" value={selfIncome}
-                                       onChange={(e) => setSelfIncome(e.target.value)}/>
+                            {/*<InputText id="selfIncome" value={selfIncome}*/}
+                            {/*           onChange={(e) => setSelfIncome(e.target.value)}/>*/}
+                            <Dropdown
+                                id="selfIncome"
+                                options={selfIncomeOptions}
+                                value={selfIncome}
+                                onChange={(e) => setSelfIncome(e.target.value)}
+                                placeholder="Select an option"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="relationalStatus">Relational Status</label>
-                            <InputText id="relationalStatus" value={relationalStatus}
-                                       onChange={(e) => setRelationalStatus(e.target.value)}/>
+                            {/*<InputText id="relationalStatus" value={relationalStatus}*/}
+                            {/*           onChange={(e) => setRelationalStatus(e.target.value)}/>*/}
+                            <Dropdown
+                                id="relationalStatus"
+                                options={relationalStatusOptions}
+                                value={relationalStatus}
+                                onChange={(e) => setRelationalStatus(e.target.value)}
+                                placeholder="Select an option"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="communicationSkill">Communication Skill</label>
-                            <InputText id="communicationSkill" value={communicationSkill}
-                                       onChange={(e) => setCommunicationSkill(e.target.value)}/>
+                            {/*<InputText id="communicationSkill" value={communicationSkill}*/}
+                            {/*           onChange={(e) => setCommunicationSkill(e.target.value)}/>*/}
+                            <Dropdown
+                                id="communicationSkill"
+                                options={communicationSkillOptions}
+                                value={communicationSkill}
+                                onChange={(e) => setCommunicationSkill(e.target.value)}
+                                placeholder="Select an option"
+                            />
                         </div>
                         <div className="field col-12 md:col-6">
                             <label htmlFor="confidence">Confidence</label>
-                            <InputText id="confidence" value={confidence}
-                                       onChange={(e) => setConfidence(e.target.value)}/>
+                            {/*<InputText id="confidence" value={confidence}*/}
+                            {/*           onChange={(e) => setConfidence(e.target.value)}/>*/}
+                            <Dropdown
+                                id="confidence"
+                                options={confidenceOptions}
+                                value={confidence}
+                                onChange={(e) => setConfidence(e.target.value)}
+                                placeholder="Select an option"
+                            />
                         </div>
                         <div className="flex flex-row-reverse">
                             <Button type="submit">Predict!</Button>
@@ -260,4 +484,3 @@ export default function StudentForm() {
     </div>
         ;
 }
-const options = [{label: "Male", value: "male"}, {label: "Female", value: "female"},];
