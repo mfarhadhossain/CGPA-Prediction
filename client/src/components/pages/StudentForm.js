@@ -8,6 +8,7 @@ import Button from "../Button";
 import {Dropdown} from "primereact/dropdown";
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/saga-blue/theme.css';
+import {ProgressBar} from "primereact/progressbar";
 
 export default function StudentForm() {
 
@@ -38,6 +39,7 @@ export default function StudentForm() {
     const [communicationSkill, setCommunicationSkill] = useState("");
     const [confidence, setConfidence] = useState("");
     const [previousSemesterResult, setPreviousSemesterResult] = useState("");
+    const [showProgressBar, setShowProgressBar] = useState(false);
 
     // options
     const departmentOptions = [
@@ -180,6 +182,7 @@ export default function StudentForm() {
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
+        setShowProgressBar(true);
         e.preventDefault();
         const newPost = {};
         if (department) newPost.department = department;
@@ -475,6 +478,10 @@ export default function StudentForm() {
                             />
                         </div>
                         <div className="flex flex-row-reverse">
+                            {showProgressBar && (
+                                <ProgressBar mode="indeterminate" style={{ height: '6px' }}></ProgressBar>
+                            )}
+
                             <Button type="submit">Predict!</Button>
                         </div>
                     </div>

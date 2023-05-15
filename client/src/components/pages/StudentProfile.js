@@ -43,7 +43,7 @@ export default function StudentProfile() {
     }, []);
 
     const renderLoader = () => (
-        <div className="p-d-flex p-ai-center p-jc-center" style={{ height: "250px" }}>
+        <div className="p-d-flex p-ai-center p-jc-center" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <ProgressSpinner />
         </div>
     );
